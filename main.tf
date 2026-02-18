@@ -23,6 +23,15 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "windows_10_localhost
   }
 }
 
+resource "cloudflare_zero_trust_access_identity_provider" "zero_trust_access_identity_provider" {
+  account_id = var.cloudflare_account_id
+  name       = "One time login"
+  type       = "onetimepin"
+  config = {
+
+  }
+}
+
 resource "cloudflare_dns_record" "ollama_zero_trust_tunnel_dns" {
   zone_id = data.cloudflare_zone.intuitive_judgments_dot_com_zone.id
   name    = "ollama"
