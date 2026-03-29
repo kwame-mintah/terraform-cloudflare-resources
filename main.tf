@@ -23,7 +23,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "windows_10_localhost
   }
 }
 
-resource "cloudflare_zero_trust_access_identity_provider" "zero_trust_access_identity_provider" {
+resource "cloudflare_zero_trust_access_identity_provider" "zero_trust_access_one_time_login_identity_provider" {
   account_id = var.cloudflare_account_id
   name       = "One time login"
   type       = "onetimepin"
