@@ -35,24 +35,24 @@ resource "cloudflare_zero_trust_access_identity_provider" "zero_trust_access_one
 resource "cloudflare_dns_record" "ollama_zero_trust_tunnel_dns" {
   zone_id = data.cloudflare_zone.intuitive_judgments_dot_com_zone.id
   name    = "ollama"
-  ttl     = "1"
   type    = "CNAME"
+  ttl     = 1
   content = "${cloudflare_zero_trust_tunnel_cloudflared.windows_10_localhost_zero_trust_tunnel.id}.cfargotunnel.com"
   proxied = true
 }
 
 resource "cloudflare_dns_record" "resend_learneverything_dkim" {
   zone_id = data.cloudflare_zone.intuitive_judgments_dot_com_zone.id
-  name    = "resend._domainkey.send"
+  name    = "resend._domainkey.learneverything"
   type    = "TXT"
   ttl     = 3600
 
-  content = "\"p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCXz69SUNQUTCFNtnleI7JCZu+W3wS+IUfgw26BTA1SksXaLBQO/1UXiLD7hbt2JA1bEc45QXS1hia3pi3Uf76JQok5DDMO5b0t3Xe418I12haQM5/N6b4NlaIDNnGsxemRWgzJ7yEJs/CaKNfss7eGeEyg2wnyqOWQTdcznquiEwIDAQAB\""
+  content = "\"p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCXz69SUNQUTCfNtnleI7JCZu+W3wS+IUfgw26BTA1SksXaLBQO/1UXiLD7hbt2JA1bEc45QXSlhia3pi3Uf76JQok5DDMO5b0t3Xe418I12haQM5/N6b4NlaIDNnGsxemRWgzJ7yEJs/CaKNfss7eGeEyg2wnyqOWQTdcznquiEwIDAQAB\""
 }
 
 resource "cloudflare_dns_record" "resend_learneverything_mx" {
   zone_id  = data.cloudflare_zone.intuitive_judgments_dot_com_zone.id
-  name     = "send"
+  name     = "send.learneverything"
   type     = "MX"
   ttl      = 3600
   priority = 10
@@ -61,7 +61,7 @@ resource "cloudflare_dns_record" "resend_learneverything_mx" {
 
 resource "cloudflare_dns_record" "resend_learneverything_spf" {
   zone_id = data.cloudflare_zone.intuitive_judgments_dot_com_zone.id
-  name    = "send"
+  name    = "send.learneverything"
   type    = "TXT"
   ttl     = 3600
 
