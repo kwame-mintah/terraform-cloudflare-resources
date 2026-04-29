@@ -45,7 +45,7 @@ resource "cloudflare_dns_record" "resend_learneverything_dkim" {
   zone_id = data.cloudflare_zone.intuitive_judgments_dot_com_zone.id
   name    = "resend._domainkey.learneverything"
   type    = "TXT"
-  ttl     = 3600
+  ttl     = 1
 
   content = "\"p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCXz69SUNQUTCfNtnleI7JCZu+W3wS+IUfgw26BTA1SksXaLBQO/1UXiLD7hbt2JA1bEc45QXSlhia3pi3Uf76JQok5DDMO5b0t3Xe418I12haQM5/N6b4NlaIDNnGsxemRWgzJ7yEJs/CaKNfss7eGeEyg2wnyqOWQTdcznquiEwIDAQAB\""
 }
